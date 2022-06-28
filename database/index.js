@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
 
-
+  repo_owner: String,
   repo_name: String,
   url: {type: String, unique: true},
   forks_count: Number
@@ -18,6 +18,7 @@ let save = (repos) => {
     repos.map(repo => {
       console.log(repo)
       var repoToSave = new Repo({
+        repo_owner: repo.repo_owner,
         repo_name: repo.repo_name,
         url: repo.url,
         forks_count: repo.forks_count

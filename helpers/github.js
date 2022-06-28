@@ -22,8 +22,9 @@ let getReposByUsername = (username, cb) => {
     response.data.forEach(repo => {
       console.log('repo:', repo.id);
       repos.push({
+        repo_owner: repo.owner.login,
         repo_name: repo.name,
-        url: repo.url,
+        url: repo.html_url,
         forks_count: repo.forks_count
       });
     });
