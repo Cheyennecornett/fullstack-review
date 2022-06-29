@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
 
 let repoSchema = mongoose.Schema({
-
+  img: String,
   repo_owner: String,
   repo_name: String,
   url: {type: String, unique: true},
@@ -18,6 +18,7 @@ let save = (repos) => {
     repos.map(repo => {
       console.log(repo)
       var repoToSave = new Repo({
+        img: repo.img,
         repo_owner: repo.repo_owner,
         repo_name: repo.repo_name,
         url: repo.url,

@@ -44,16 +44,7 @@ class App extends React.Component {
   }
 
   getRepos() {
-  //  $.ajax({
-  //   type: 'GET',
-  //   url: '/repos',
-  //   success: (repos) => {
-  //     console.log(repos)
-  // this.setState({repos: repos})};
-  //  },
-  //  error: () => {
-  //   console.log('ajax get rewuest failed');
-  //  })
+
   return axios.get('/repos').then(({ data }) => {
     this.setState({
       repos: data
@@ -66,8 +57,9 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
+
       <Search onSearch={this.search.bind(this)}/>
+      <RepoList repos={this.state.repos}/>
     </div>)
   }
 }
